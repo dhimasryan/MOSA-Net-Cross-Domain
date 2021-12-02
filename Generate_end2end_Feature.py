@@ -1,3 +1,8 @@
+"""
+@author: Ryandhimas Zezario
+ryandhimas@citi.sinica.edu.tw
+"""
+
 import sys
 import scipy.io
 import librosa
