@@ -13,6 +13,10 @@ You can download our environmental setup at Environment Folder and use the follo
 ```js
 conda env create -f environment.yml
 ```
+**Feature Extaction**
+
+For extracting cross-domain features, please use Generate_end2end_Feature.py, Generate_PS_Feature.py, Generate_SSL_Feature.py. When extracting SSL feature, please make sure that fairseq can be imported correctly. Please refer to this link for detail <a href="https://github.com/pytorch/fairseq" target="_blank">installation</a>. 
+
 
 **Citation**
 
