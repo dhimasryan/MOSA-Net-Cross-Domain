@@ -46,25 +46,6 @@ def Get_filenames(ListPath):
             FileList.append(line.strip("\n"));
     return FileList;
     
-def Feature_Extrator(path, Noisy=False):
-    
-    signal, rate  = librosa.load(path,sr=16000)
-    signal=signal/np.max(abs(signal))
-    
-    F = librosa.stft(signal,n_fft=512,hop_length=256,win_length=512,window=scipy.signal.hamming)
-    
-    Lp=np.abs(F)
-    phase=np.angle(F)
-    if Noisy==True:    
-        meanR = np.mean(Lp, axis=1).reshape((257,1))
-        stdR = np.std(Lp, axis=1).reshape((257,1))+1e-12
-        NLp = (Lp-meanR)/stdR
-    else:
-        NLp=Lp
-    
-    NLp=np.reshape(NLp.T,(1,NLp.shape[1],257))
-    return NLp, phase
-
 def train_data_generator(file_list_PS, file_list_End2End, file_list_hubert):
 	index=0
 	while True:
