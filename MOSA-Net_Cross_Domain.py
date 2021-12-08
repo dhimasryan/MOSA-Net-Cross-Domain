@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from keras.utils import plot_model
 from keras.models import Sequential, model_from_json, Model
-from keras.layers import Layer
+from keras.layers import Layer, concatenate
 from keras.layers.core import Dense, Dropout, Flatten, Activation, Reshape, Lambda
 from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import Conv1D,Conv2D
