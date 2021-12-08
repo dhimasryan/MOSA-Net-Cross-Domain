@@ -6,6 +6,7 @@ ryandhimas@citi.sinica.edu.tw
 import os, sys
 import keras
 import matplotlib
+import math
 # Force matplotlib to not use any Xwindows backend.
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -15,12 +16,12 @@ from keras.layers import Layer, concatenate
 from keras.layers.core import Dense, Dropout, Flatten, Activation, Reshape, Lambda
 from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import Conv1D,Conv2D
-from keras.layers.pooling import GlobalAveragePooling1D
+from keras.layers.pooling import GlobalAveragePooling1D, AveragePooling1D
 from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint
 from keras import backend as K
 from keras.backend import squeeze
-from keras.layers import LSTM, TimeDistributed, Bidirectional, dot, Input
+from keras.layers import LSTM, TimeDistributed, Bidirectional, dot, Input, CuDNNLSTM
 from keras.constraints import max_norm
 from keras_self_attention import SeqSelfAttention
 from SincNet import Sinc_Conv_Layer
