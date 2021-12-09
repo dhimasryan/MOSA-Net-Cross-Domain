@@ -19,8 +19,14 @@ For extracting cross-domain features, please use Generate_end2end_Feature.py, Ge
 
 **How to run the code**
 
-To run the code, simply run MOSA-Net_Cross_Domain.py
-
+Please use following script to train the model:
+```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode train
+```
+For, the testing stage, plase use the following script:
+```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode test
+```
 
 **Citation**
 
