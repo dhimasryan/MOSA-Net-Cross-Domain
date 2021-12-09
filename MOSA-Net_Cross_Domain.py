@@ -40,13 +40,13 @@ random.seed(999)
 epoch=100
 batch_size=1
 
-def Get_filenames(ListPath):
-    FileList=[];
-    with open(ListPath) as fp:
-        for line in fp:
-            FileList.append(line.strip("\n"));
-    return FileList;
-    
+def ListRead(filelist):
+    f = open(filelist, 'r')
+    Path=[]
+    for line in f:
+        Path=Path+[line[0:-1]]
+    return Path
+
 def train_data_generator(file_list_PS, file_list_End2End, file_list_hubert):
 	index=0
 	while True:
@@ -225,7 +225,6 @@ def Test(Test_list_PS, Test_list_End2End, Test_list_hubert,pathmodel):
         SDI_Predict[i]=SDI_score
         SDI_true[i]   =sdi
     
-
     MSE=np.mean((PESQ_true-PESQ_Predict)**2)
     print ('Test error= %f' % MSE)
     LCC=np.corrcoef(PESQ_true, PESQ_Predict)
@@ -288,6 +287,8 @@ if __name__ == '__main__':
      
     parser = argparse.ArgumentParser('')
     parser.add_argument('--gpus', type=str, default='0') 
+    parser.add_argument('--mode', type=str, default='train') 
+    
     args = parser.parse_args() 
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus
     
@@ -302,9 +303,13 @@ if __name__ == '__main__':
     Test_list_End2End = ListRead('List_Npy_Test_end2end.txt')
     Test_list_hubert = ListRead('List_Npy_Test_hubert_large_model.txt')
     Num_testdata= len (Test_list_PS)
- 
-    train(Train_list_PS, Train_list_End2End, Train_list_hubert, Num_train, Test_list_PS, Test_list_End2End, Test_list_hubert, Num_testdata, pathmodel)
+
+    if args.mode == 'train':
+       print 'training'  
+       train(Train_list_PS, Train_list_End2End, Train_list_hubert, Num_train, Test_list_PS, Test_list_End2End, Test_list_hubert, Num_testdata, pathmodel)
+       print 'complete training stage'    
     
-    print 'testing' 
-    Test(Test_list_PS, Test_list_End2End, Test_list_hubert,pathmodel)
-    print 'complete testing stage'
+    if args.mode == 'test':      
+       print 'testing' 
+       Test(Test_list_PS, Test_list_End2End, Test_list_hubert,pathmodel)
+       print 'complete testing stage'
