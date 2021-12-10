@@ -58,9 +58,9 @@ def extracting_end2end_features(file_list):
 if __name__ == '__main__':	
     print 'Extracting End2End Features...'	
     
-    Enhanced_list = Get_filenames('EnhAllDataList_PESQ_STOI_SDI.txt')
-    Noisy_list = Get_filenames('NoisyList_PESQ_STOI_SDI.txt')
-    Clean_list = Get_filenames('CleanList_PESQ_STOI_SDI.txt')
+    Enhanced_list = ListRead('EnhAllDataList_PESQ_STOI_SDI.txt')
+    Noisy_list = ListRead('NoisyList_PESQ_STOI_SDI.txt')
+    Clean_list = ListRead('CleanList_PESQ_STOI_SDI.txt')
 
     Enhanced_noisy_list=Enhanced_list+Noisy_list
     Train_list= Enhanced_noisy_list+Clean_list
