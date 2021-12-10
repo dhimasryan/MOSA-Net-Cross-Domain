@@ -49,7 +49,13 @@ def Extract_SSL_Feat(filepath, model, list_new,dirname):
     
 def train_data_generator(file_list,model):
     dirname='./data/phase1-main/Hubert/train/'
+    
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+        print('Creating Directory')        
+
     list_new=[]
+    print('Extracting Train-SSL Features')       
     for index in range(len(file_list)):
         pesq_filepath = file_list[index].split(',')
         list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname)    
@@ -60,8 +66,12 @@ def train_data_generator(file_list,model):
 
 def val_data_generator(file_list,model):
     dirname='./data/phase1-main/Hubert/val/'
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+        print('Creating Directory')       
+        
     list_new=[]
-    
+    print('Extracting Val-SSL Features')        
     for index in range(len(file_list)):   
         pesq_filepath = file_list[index].split(',')
         list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname)    

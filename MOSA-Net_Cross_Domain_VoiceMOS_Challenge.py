@@ -177,9 +177,12 @@ def train(Train_list, Train_list_hubert, Num_train, Test_list, Test_list_hubert,
     
     model = BLSTM_CNN_with_ATT_cross_domain()
     
+    get_model_name = pathmodel.split('/')  
+    model_name =  get_model_name [2]
+    
     adam = Adam(lr=1e-6)
     model.compile(loss={'MOS_score': 'mse', 'Frame_score': 'mse'}, optimizer=adam)
-    plot_model(model, to_file='model_'+str(pathmodel)+'_epoch_'+str(epoch)+'.png', show_shapes=True)
+    plot_model(model, to_file='model_'+str(model_name)+'_epoch_'+str(epoch)+'.png', show_shapes=True)
     
     with open(pathmodel+'_epoch_'+str(epoch)+'.json','w') as f:    # save the model
         f.write(model.to_json()) 
@@ -207,7 +210,7 @@ def train(Train_list, Train_list_hubert, Num_train, Test_list, Test_list_hubert,
     plt.ylabel('error')
     plt.grid(True)
     plt.show()
-    plt.savefig('Learning_curve_'+str(pathmodel)+'_epoch_'+str(epoch)+'.png', dpi=150)
+    plt.savefig('Learning_curve_'+str(model_name)+'_epoch_'+str(epoch)+'.png', dpi=150)
 
 
 def Test(Test_list_PS, Test_list_hubert,pathmodel):
@@ -215,6 +218,9 @@ def Test(Test_list_PS, Test_list_hubert,pathmodel):
     
     model_test = BLSTM_CNN_with_ATT_cross_domain()
     model_test.load_weights(pathmodel+'_epoch_'+str(epoch)+'.h5')
+
+    get_model_name = pathmodel.split('/')  
+    model_name =  get_model_name [2]
     
     print 'testing...'
     MOS_Predict=np.zeros([len(Test_List),])
@@ -227,7 +233,7 @@ def Test(Test_list_PS, Test_list_hubert,pathmodel):
     MOS_Predict_systems = {system:[] for system in systems_list}
     MOS_True_systems = {system:[] for system in systems_list}
     
-    for i in range(len(Test_List)):
+    for i in range(len(Test_List)): 
        print i
        Asessment_filepath=Test_List[i].split(',')
        hubert_filepath = Test_List_Hubert_feat[i].split(',')
@@ -258,7 +264,7 @@ def Test(Test_list_PS, Test_list_hubert,pathmodel):
     MOS_True_systems = np.array([np.mean(scores) for scores in MOS_True_systems.values()])
     
    
-    with open('List_predicted_score_mos'+pathmodel+'_epoch_'+str(epoch)+'_answer.txt','w') as g:
+    with open('List_predicted_score_mos'+str(model_name)+'_epoch_'+str(epoch)+'_answer.txt','w') as g:
         for item in list_predicted_mos_score:
           g.write("%s\n" % item)
 
@@ -283,7 +289,7 @@ def Test(Test_list_PS, Test_list_hubert,pathmodel):
     plt.ylabel('Predicted MOS')
     plt.title('LCC= %f, SRCC= %f, MSE= %f, KTAU= %f' % (LCC[0][1], SRCC[0], MSE, KTAU[0]))
     plt.show()
-    plt.savefig('Scatter_plot_MOS_'+str(pathmodel)+'_epoch_'+str(epoch)+'.png', dpi=150)
+    plt.savefig('Scatter_plot_MOS_'+str(model_name)+'_epoch_'+str(epoch)+'.png', dpi=150)
 
     print ('Systems Level-Score')
     MSE=np.mean((MOS_True_systems-MOS_Predict_systems)**2)
@@ -302,10 +308,10 @@ if __name__ == '__main__':
     args = parser.parse_args() 
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus
     
-    pathmodel="MOSA-Net_Cross_Domain"
+    pathmodel="./PreTrained_VoiceMOSChallenge/MOSA-Net_Cross_Domain"
 
-    Train_list = ListRead('./data/phase1-main/DATA/sets/train_mos_list_upd.txt')
-    Train_list_hubert = ListRead('./data/phase1-main/DATA/sets/List_Npy_Train_hubert_MOS_Challenge_phase1_main_upd.txt')
+    Train_list = ListRead('./data/phase1-main/DATA/sets/train_mos_list.txt')
+    Train_list_hubert = ListRead('./data/phase1-main/DATA/sets/List_Npy_Train_hubert_MOS_Challenge_phase1_main.txt')
     NUM_DATA_TRAIN =  len(Train_list)
     
     random.Random(7).shuffle(Train_list)
