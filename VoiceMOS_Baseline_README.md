@@ -25,7 +25,9 @@ data
  
  ### Training the Model  ###
  
-Before training the model, please make sure that all dependencies have been installed correctly. 
+Before training the model, please make sure that all dependencies have been installed correctly.
+
+Please be noted, that the shared environment in ```MOSA-Net-Cross-Domain/Environment/environment.yml``` is specifically used to run ```MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py```. To generate Self Supervised Learning (SSL) feature ```Extracting_Hubert_Feature_VoiceMOS_Challenge.py```, please use ```python 3.6``` and follow the instructions in following <a href="https://github.com/pytorch/fairseq" target="_blank">link</a> to deploy fairseq module.
  
 For extracting Self Supervised Learning (SSL) feature, please make sure that <a href="https://github.com/pytorch/fairseq" target="_blank">fairseq</a> module can be imported correctly and you can put fairseq under ```MOSA-Net-Cross-Domain/ ``` and put the Hubert model <a href="https://github.com/pytorch/fairseq/tree/main/examples/hubert#load-a-pretrained-model" target="_blank">(hubert_large_ll60k.pt)</a> under ```fairseq/```
 
