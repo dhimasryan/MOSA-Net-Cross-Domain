@@ -61,7 +61,7 @@ complete testing stage
 ```
 Additionally, the answer.txt file will also be generated
 
-**Submission to CodaLab**
+### Submission to CodaLab ###
 
 The submission format of the CodaLab competition platform is a zip file (can be any name) containing a text file called answer.txt (this naming is a MUST).
 To submit to the CodaLab competition platform, compress answer.txt in zip format (via zip command in Linux or GUI in MacOS) and name it whatever you want. Then this zip file is ready to be submitted!
