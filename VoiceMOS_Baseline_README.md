@@ -6,7 +6,7 @@ The MOSA-Net Cross-Domain system implemented in this repository serves as one of
 ## Training phase (phase 1)
 During the training phase, the training set and the developement set are released. In the following, we demonstrate how to train the model using the training set, and decode using the developement set to generate a result file that can be submitted to the CodaLab platform.
 
-**Data preparation** 
+ ### Data preparation ###
 
 After downloading the dataset preparation scripts, please follow the instructions to gather the complete training and development set. For the rest of this README, we assume that the data is put under data/, but feel free to put it somewhere else. The data directorty should have the following structure:
 ```js
@@ -23,6 +23,44 @@ data
     └─── ...
  ```
  
+ ### Training the Model  ###
+ 
+Before training the model, please make sure that all dependencies have been installed correctly. 
+ 
+For extracting Self Supervised Learning (SSL) feature, please make sure that <a href="https://github.com/pytorch/fairseq" target="_blank">fairseq</a> module can be imported correctly and you can put fairseq under ```MOSA-Net-Cross-Domain/ ``` and put the Hubert model <a href="https://github.com/pytorch/fairseq/tree/main/examples/hubert#load-a-pretrained-model" target="_blank">(hubert_large_ll60k.pt)</a> under ```fairseq/```
+
+You can use following script to extract Hubert-SSL feature.
+```js
+python Extracting_Hubert_Feature_VoiceMOS_Challenge.py
+ ```
+ 
+ Next to train the MOSA-Net Cross-Domain model, please use the following scipt:
+ ```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode train
+```
+
+### Inference from pretrained model ###
+For testing stage, you can use the following script:
+```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode test
+```
+Besides, by using the pretrained model ```./PreTrained_VoiceMOSChallenge/MOSA-Net_Cross_Domain_100epoch.h5```, you should get the following results.
+```js
+Utterance Level-Score
+Test error= 0.277645
+Linear correlation coefficient= 0.818193
+Spearman rank correlation coefficient= 0.817553
+Kendalls tau correlation= 0.632293
+
+Systems Level-Score
+Test error= 0.145215
+Linear correlation coefficient= 0.903258
+Spearman rank correlation coefficient= 0.899877
+Kendalls tau correlation= 0.738427
+complete testing stage
+```
+Additionally, the answer.txt file will also be generated
+
 **Submission to CodaLab**
 
 The submission format of the CodaLab competition platform is a zip file (can be any name) containing a text file called answer.txt (this naming is a MUST).
