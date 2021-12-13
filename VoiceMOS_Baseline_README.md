@@ -33,18 +33,18 @@ For extracting Self Supervised Learning (SSL) feature, please make sure that <a 
 
 You can use following script to extract Hubert-SSL feature.
 ```js
-python Extracting_Hubert_Feature_VoiceMOS_Challenge.py
+python Extracting_Hubert_Feature_VoiceMOS_Challenge.py --track phase1-main
  ```
  
  Next to train the MOSA-Net Cross-Domain model, please use the following scipt:
  ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode train
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode train
 ```
 
 ### Inference from pretrained model ###
 For testing stage, you can use the following script:
 ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --mode test
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode test
 ```
 Besides, by using the pretrained model ```./PreTrained_VoiceMOSChallenge/MOSA-Net_Cross_Domain_100epoch.h5```, you should get the following results.
 ```js
