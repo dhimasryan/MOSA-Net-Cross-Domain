@@ -63,7 +63,28 @@ complete testing stage
 ```
 Additionally, the answer.txt file will also be generated
 
+
+### Out-of-domain track (OOD) Track ###
+For the OOD track, please make sure you have extracted the data correctly. We assume that the data is put under data/, but feel free to put it somewhere else.
+
+For extracting Self Supervised Learning (SSL) feature, please use the following script:
+```js
+python Extracting_Hubert_Feature_VoiceMOS_Challenge.py --track phase1-ood
+ ```
+ 
+For training the MOSA-Net on OOD track, you can simply use the following script:
+ ```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode train
+```
+
+Similar to the above command, we can get the inference score by using the following script:
+```js
+python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode test
+```
+
 ### Submission to CodaLab ###
 
 The submission format of the CodaLab competition platform is a zip file (can be any name) containing a text file called answer.txt (this naming is a MUST).
-To submit to the CodaLab competition platform, compress answer.txt in zip format (via zip command in Linux or GUI in MacOS) and name it whatever you want. Then this zip file is ready to be submitted!
+To submit to the CodaLab competition platform, compress answer.txt in zip format (via zip command in Linux or GUI in MacOS) and name it whatever you want. Then this zip file is ready to be submitted! 
+
+For the detailed instruction, please kindly check the following <a href="https://github.com/unilight/LDNet/blob/main/VoiceMOS_baseline_README.md#submission-generation-for-the-codalab-platform" target="_blank">link</a>.
