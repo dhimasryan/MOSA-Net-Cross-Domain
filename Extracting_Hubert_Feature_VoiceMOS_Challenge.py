@@ -14,6 +14,7 @@ import random
 import pdb
 import torch
 import fairseq
+import argparse
 
 def ListRead(filelist):
     f = open(filelist, 'r')
@@ -26,11 +27,11 @@ def shuffle_list(x_old,index):
     x_new=[x_old[i] for i in index]
     return x_new    
          
-def Extract_SSL_Feat(filepath, model, list_new,dirname):
+def Extract_SSL_Feat(filepath, model, list_new,dirname, track_name):
     name = filepath [0]
     name_without_ext = name[:-4] 
     new_name =  name_without_ext +'.npy'
-    path = './data/phase1-main/DATA/wav/'+name  
+    path = './data/'+track_name+'/DATA/wav/'+name  
 
     cached_path = dirname+str(new_name)
     audio_data, _ = librosa.load(path, sr=16000) 
@@ -47,8 +48,8 @@ def Extract_SSL_Feat(filepath, model, list_new,dirname):
     
     return list_new
     
-def train_data_generator(file_list,model):
-    dirname='./data/phase1-main/Hubert/train/'
+def train_data_generator(file_list,model, track_name):
+    dirname='./data/'+track_name+'/Hubert/train/'
     
     if not os.path.exists(dirname):
         os.makedirs(dirname)
@@ -58,14 +59,14 @@ def train_data_generator(file_list,model):
     print('Extracting Train-SSL Features')       
     for index in range(len(file_list)):
         pesq_filepath = file_list[index].split(',')
-        list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname)    
+        list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname, track_name)    
    
-    with open('./data/phase1-main/DATA/sets/List_Npy_Train_hubert_MOS_Challenge_phase1_main.txt','w') as g:
+    with open('./data/'+track_name+'/DATA/sets/List_Npy_Train_hubert_MOS_Challenge_phase1_main.txt','w') as g:
         for item in list_new:
           g.write("%s\n" % item)
 
-def val_data_generator(file_list,model):
-    dirname='./data/phase1-main/Hubert/val/'
+def val_data_generator(file_list,model, track_name):
+    dirname='./data/'+track_name+'/Hubert/val/'
     if not os.path.exists(dirname):
         os.makedirs(dirname)
         print('Creating Directory')       
@@ -74,24 +75,29 @@ def val_data_generator(file_list,model):
     print('Extracting Val-SSL Features')        
     for index in range(len(file_list)):   
         pesq_filepath = file_list[index].split(',')
-        list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname)    
+        list_new=Extract_SSL_Feat(pesq_filepath, model, list_new,dirname, track_name)    
 
-    with open('./data/phase1-main/DATA/sets/List_Npy_Val_hubert_MOS_Challenge_phase1_main.txt','w') as g:
+    with open('./data/'+track_name+'/DATA/sets/List_Npy_Val_hubert_MOS_Challenge_phase1_main.txt','w') as g:
         for item in list_new:
           g.write("%s\n" % item)
                     
-def Save_NPY(Train_data, Val_data):
+def Save_NPY(Train_data, Val_data, track_name):
     cp_path = './fairseq/hubert_large_ll60k.pt'
     model, cfg, task = fairseq.checkpoint_utils.load_model_ensemble_and_task([cp_path], arg_overrides={"data": "./fairseq/data/dict"})
     model = model[0]
     model.eval()
     device = torch.device("cuda:0")
     model = model.to(device)
-    train_data_generator(Train_data,model)
-    val_data_generator(Val_data,model)
+    train_data_generator(Train_data,model, track_name)
+    val_data_generator(Val_data,model, track_name)
 
-if __name__ == '__main__':	
-    Train_list= ListRead('./data/phase1-main/DATA/sets/train_mos_list.txt')
-    Val_list= ListRead('./data/phase1-main/DATA/sets/val_mos_list.txt')
-    Save_NPY(Train_list, Val_list)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser('')
+    parser.add_argument('--track', type=str, default='phase1-main') 
+    args = parser.parse_args() 
+    track_name = args.track
+
+    Train_list= ListRead('./data/'+track_name+'/DATA/sets/train_mos_list.txt')
+    Val_list= ListRead('./data/'+track_name+'/DATA/sets/val_mos_list.txt')
+    Save_NPY(Train_list, Val_list, track_name)
 	
