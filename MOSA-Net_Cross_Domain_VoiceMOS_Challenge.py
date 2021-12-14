@@ -50,7 +50,9 @@ def ListRead(filelist):
 def Sp_and_phase(path, Noisy=False):
 
     audio_data, _ = librosa.load(path, sr=16000)
-    audio_data=audio_data/np.max(abs(audio_data))   
+    
+    if np.max(abs(audio_data)) != 0:
+       audio_data=audio_data/np.max(abs(audio_data))   
     
     F = librosa.stft(audio_data,n_fft=512,hop_length=256,win_length=512,window=scipy.signal.hamming)
       
