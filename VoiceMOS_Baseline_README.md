@@ -44,7 +44,7 @@ python MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py --gpus <assigned GPU> --name 
 ### Inference from pretrained model ###
 For testing stage, you can use the following script:
 ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode test
+python MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode test
 ```
 Besides, by using the pretrained model ```./PreTrained_VoiceMOSChallenge/MOSA-Net_Cross_Domain_100epoch.h5```, you should get the following results.
 ```js
