@@ -38,7 +38,7 @@ python Extracting_Hubert_Feature_VoiceMOS_Challenge.py --track phase1-main
  
  Next to train the MOSA-Net Cross-Domain model, please use the following scipt:
  ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode train
+python MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py --gpus <assigned GPU> --name <Model Name> --track phase1-main --mode train
 ```
 
 ### Inference from pretrained model ###
@@ -74,12 +74,12 @@ python Extracting_Hubert_Feature_VoiceMOS_Challenge.py --track phase1-ood
  
 For training the MOSA-Net on OOD track, you can simply use the following script:
  ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode train
+python MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode train
 ```
 
 Similar to the above command, we can get the inference score by using the following script:
 ```js
-python MOSA-Net_Cross_Domain.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode test
+python MOSA-Net_Cross_Domain_VoiceMOS_Challenge.py --gpus <assigned GPU> --name <Model Name> --track phase1-ood --mode test
 ```
 
 ### Submission to CodaLab ###
