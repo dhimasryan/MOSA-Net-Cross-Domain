@@ -222,7 +222,7 @@ def train(Train_list, Train_list_hubert, Num_train, Test_list, Test_list_hubert,
     plt.savefig('Learning_curve_'+str(model_name)+'_epoch_'+str(epoch)+'.png', dpi=150)
 
 
-def Test(Test_List, Test_List_Hubert_feat,pathmodel, track_name):
+def Test(Test_List, Test_List_Hubert_feat, pathmodel, track_name):
     print 'load model...'
     
     model_test = BLSTM_CNN_with_ATT_cross_domain()
