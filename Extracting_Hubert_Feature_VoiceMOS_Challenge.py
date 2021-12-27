@@ -38,7 +38,8 @@ def Extract_SSL_Feat(filepath, model, list_new,dirname, track_name):
 
     end2end_channel_1 = np.reshape(audio_data,(1,audio_data.shape[0]))   
     end2end_channel_1 = torch.from_numpy(end2end_channel_1).to("cuda:0")
-    features_1 = model(end2end_channel_1, features_only=True, mask=False)['x']  
+    with torch.no_grad():
+        features_1 = model(end2end_channel_1, features_only=True, mask=False)['x']  
     causal_1 = features_1.detach().to("cpu").numpy()
     
     np.save(cached_path,causal_1)
