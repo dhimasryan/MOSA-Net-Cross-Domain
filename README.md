@@ -19,6 +19,11 @@ Please be noted, that the above environment is specifically used to run ```MOSA-
 
 For extracting cross-domain features, please use Generate_end2end_Feature.py, Generate_PS_Feature.py, Generate_SSL_Feature.py. When extracting SSL feature, please make sure that fairseq can be imported correctly. Please refer to this link for detail <a href="https://github.com/pytorch/fairseq" target="_blank">installation</a>. 
 
+Please follow the following format to make the input list.
+```js
+PESQ score, STOI score, SDI score, filepath directory
+```
+
 ### How to run the code ###
 
 Please use following script to train the model:
