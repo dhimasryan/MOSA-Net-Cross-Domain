@@ -1,6 +1,6 @@
 # MOSA-Net+ : An improved version of MOSA-Net 
 
-This section of this repository aims to introduce an improved version of MOSA-Net model, namely MOSA-Net +, by leveraging the acoustic features from <a href="https://github.com/openai/whisper" target="_blank">Whisper</a>. The detail of the model architecture can be found in our <a href="https://arxiv.org/pdf/2309.12766.pdf" target="_blank">here.</a> 
+This section of this repository aims to introduce an improved version of MOSA-Net model, namely MOSA-Net + (Top performance in Track 3 <a href="https://arxiv.org/pdf/2310.02640.pdf" target="_blank">VoiceMOS Challenge 2023</a>), which leverages the acoustic features from <a href="https://github.com/openai/whisper" target="_blank">Whisper</a>. The details of the model architecture can be found in our <a href="https://arxiv.org/pdf/2309.12766.pdf" target="_blank">here.</a> 
 
 ### Installation ###
 
@@ -28,7 +28,7 @@ python MOSANet_plus_VoiceMOS2023.py --gpus <assigned GPU> --mode test
 
 ### Citation ###
 
-Please kindly cite our paper, if you find this code is useful.
+Please kindly cite our paper if you find this code useful.
 
 <a id="1"></a> 
 R. E. Zezario, S. -W. Fu, F. Chen, C. -S. Fuh, H. -M. Wang and Y. Tsao, "Deep Learning-Based Non-Intrusive Multi-Objective Speech Assessment Model With Cross-Domain Features," in IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 54-70, 2023, doi: 10.1109/TASLP.2022.3205757.
