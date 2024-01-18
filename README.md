@@ -6,6 +6,8 @@ This study proposes a cross-domain multi-objective speech assessment model, call
 
 For more detail please check our <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9905733" target="_blank">Paper</a>
 
+The implementation of MOSA-Net with Whisper features (MOSA-Net+) can be checked in the following folder <a href="https://github.com/dhimasryan/MOSA-Net-Cross-Domain/tree/main/MOSA_Net%2B" target="_blank">MOSA-Net-Cross-Domain/MOSA_Net+</a> 
+
 ### Installation ###
 
 You can download our environmental setup at Environment Folder and use the following script.
@@ -14,7 +16,7 @@ conda env create -f environment.yml
 ```
 
 Please be noted, that the above environment is specifically used to run ```MOSA-Net_Cross_Domain.py, Generate_PS_Feature.py, Generate_end2end_Feature.py```. To generate Self Supervised Learning (SSL) feature, please use ```python 3.6``` and follow the instructions in following <a href="https://github.com/pytorch/fairseq" target="_blank">link</a> to deploy fairseq module.  
-### Feature Extaction ###
+### Feature Extraction ###
 
 For extracting cross-domain features, please use Generate_end2end_Feature.py, Generate_PS_Feature.py, Generate_SSL_Feature.py. When extracting SSL feature, please make sure that fairseq can be imported correctly. Please refer to this link for detail <a href="https://github.com/pytorch/fairseq" target="_blank">installation</a>. 
 
