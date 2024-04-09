@@ -3,7 +3,7 @@
 This section of this repository aims to introduce an improved version of MOSA-Net model, namely MOSA-Net + (Top performance in Track 3 <a href="https://arxiv.org/pdf/2310.02640.pdf" target="_blank">VoiceMOS Challenge 2023</a>), which leverages the acoustic features from <a href="https://github.com/openai/whisper" target="_blank">Whisper</a>. The details of the model architecture can be found in our <a href="https://arxiv.org/pdf/2309.12766.pdf" target="_blank">here.</a> 
 
 ### TF Version ###
-Please kindly check the following folder for TF implementation MOSA-Net-Cross-Domain/MOSA_Net+/TF_version/ 
+Please kindly check the following folder for TF implementation <a href="https://github.com/dhimasryan/MOSA-Net-Cross-Domain/tree/main/MOSA_Net%2B/TF_version" target="_blank">MOSA-Net-Cross-Domain/MOSA_Net+/TF_version/</a>
 
 ### Citation ###
 
