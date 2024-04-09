@@ -1,12 +1,12 @@
 # Deep Learning-based Non-Intrusive Multi-Objective Speech Assessment Model with Cross-Domain Features
 
+The implementation of MOSA-Net with Whisper features (MOSA-Net+) can be checked in the following folder <a href="https://github.com/dhimasryan/MOSA-Net-Cross-Domain/tree/main/MOSA_Net%2B" target="_blank">MOSA-Net-Cross-Domain/MOSA_Net+</a> 
+
 ### Introduction ###
 
 This study proposes a cross-domain multi-objective speech assessment model, called MOSA-Net, which can simultaneously estimate the speech quality, intelligibility, and distortion assessment scores of an input speech signal. MOSA-Net comprises a convolutional neural network and bidirectional long short-term memory architecture for representation extraction, and a multiplicative attention layer and a fully connected layer for each assessment metric prediction. Additionally, cross-domain features (spectral and time-domain features) and latent representations from self-supervised learned (SSL) models are used as inputs to combine rich acoustic information to obtain more accurate assessments. Experimental results show that in both seen and unseen noise environments, MOSA-Net can improve the linear correlation coefficient (LCC) scores in perceptual evaluation of speech quality (PESQ) prediction, compared to Quality-Net, an existing single-task model for PESQ prediction, and improve LCC scores in short-time objective intelligibility (STOI) prediction, compared to STOI-Net, an existing single-task model for STOI prediction. Moreover, MOSA-Net can be used as a pre-trained model to be effectively adapted to an assessment model for predicting subjective quality and intelligibility scores with a limited amount of training data. Experimental results show that MOSA-Net can improve LCC scores in mean opinion score (MOS) predictions, compared to MOS-SSL, a strong single-task model for MOS prediction.
 
 For more detail please check our <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9905733" target="_blank">Paper</a>
-
-The implementation of MOSA-Net with Whisper features (MOSA-Net+) can be checked in the following folder <a href="https://github.com/dhimasryan/MOSA-Net-Cross-Domain/tree/main/MOSA_Net%2B" target="_blank">MOSA-Net-Cross-Domain/MOSA_Net+</a> 
 
 ### Installation ###
 
