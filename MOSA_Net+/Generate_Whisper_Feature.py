@@ -16,7 +16,7 @@ def ListRead(filelist):
     return Path
     
 def extract(input_list, filename, directory, mode):
-    device = torch.device("gpu")
+    device = torch.device("cuda")
     model_asli = WhisperModel.from_pretrained("openai/whisper-large-v3")   
     model = model_asli.to(device)  
 
