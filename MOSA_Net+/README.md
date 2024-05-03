@@ -2,6 +2,11 @@
 
 ### Abstract
 This research introduces an enhanced version of the multi-objective speech assessment model--MOSA-Net+, by leveraging the acoustic features from Whisper, a large-scaled weakly supervised model. We first investigate the effectiveness of Whisper in deploying a more robust speech assessment model. After that, we explore combining representations from Whisper and SSL models.  The experimental results reveal that Whisper's embedding features can contribute to more accurate prediction performance. Moreover, combining the embedding features from Whisper and SSL models only leads to marginal improvement. As compared to intrusive methods, MOSA-Net, and other SSL-based speech assessment models, MOSA-Net+ yields notable improvements in estimating subjective quality and intelligibility scores across all evaluation metrics in Taiwan Mandarin Hearing In Noise test - Quality & Intelligibility (TMHINT-QI) dataset. To further validate its robustness, MOSA-Net+ was tested in the noisy-and-enhanced track of the VoiceMOS Challenge 2023, where it obtained the top-ranked performance among nine systems.
+<a href="https://arxiv.org/abs/2309.12766" target="_blank">Full paper</a> 
+
+
+### Dataset ###
+You can download the dataset in the following  <a href="https://github.com/dhimasryan/TMHINT-QI_VoiceMOS2023" target="_blank">link</a> 
 
 ### Installation ###
 
