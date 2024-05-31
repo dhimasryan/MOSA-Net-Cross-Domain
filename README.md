@@ -2,6 +2,9 @@
 
 The implementation of MOSA-Net with Whisper features (MOSA-Net+) can be checked in the following folder <a href="https://github.com/dhimasryan/MOSA-Net-Cross-Domain/tree/main/MOSA_Net%2B" target="_blank">MOSA-Net-Cross-Domain/MOSA_Net+</a> 
 
+The HuggingFace demo page of MOSA-Net+ <a href="https://huggingface.co/spaces/wetdog/MOSA-Net_plus" target="_blank">Link</a> 
+
+
 ### Introduction ###
 
 This study proposes a cross-domain multi-objective speech assessment model, called MOSA-Net, which can simultaneously estimate the speech quality, intelligibility, and distortion assessment scores of an input speech signal. MOSA-Net comprises a convolutional neural network and bidirectional long short-term memory architecture for representation extraction, and a multiplicative attention layer and a fully connected layer for each assessment metric prediction. Additionally, cross-domain features (spectral and time-domain features) and latent representations from self-supervised learned (SSL) models are used as inputs to combine rich acoustic information to obtain more accurate assessments. Experimental results show that in both seen and unseen noise environments, MOSA-Net can improve the linear correlation coefficient (LCC) scores in perceptual evaluation of speech quality (PESQ) prediction, compared to Quality-Net, an existing single-task model for PESQ prediction, and improve LCC scores in short-time objective intelligibility (STOI) prediction, compared to STOI-Net, an existing single-task model for STOI prediction. Moreover, MOSA-Net can be used as a pre-trained model to be effectively adapted to an assessment model for predicting subjective quality and intelligibility scores with a limited amount of training data. Experimental results show that MOSA-Net can improve LCC scores in mean opinion score (MOS) predictions, compared to MOS-SSL, a strong single-task model for MOS prediction.
@@ -44,5 +47,6 @@ Please kindly cite our paper, if you find this code is useful.
 R. E. Zezario, S. -W. Fu, F. Chen, C. -S. Fuh, H. -M. Wang and Y. Tsao, "Deep Learning-Based Non-Intrusive Multi-Objective Speech Assessment Model With Cross-Domain Features," in IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 54-70, 2023, doi: 10.1109/TASLP.2022.3205757.
 
 ### Note ###
+Many thanks to  <a href="https://github.com/wetdog" target="_blank">@wetdog</a> for providing the demo of MOSA-Net+ at HuggingFace
 
 <a href="https://github.com/CyberZHG/keras-self-attention" target="_blank">Self Attention</a>, <a href="https://github.com/grausof/keras-sincnet" target="_blank">SincNet</a>, <a href="https://github.com/pytorch/fairseq" target="_blank">Self-Supervised Learning Model</a> are created by others
